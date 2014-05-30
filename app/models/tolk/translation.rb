@@ -2,7 +2,7 @@ module Tolk
   class Translation < ActiveRecord::Base
     self.table_name = "tolk_translations"
 
-    attr_accessible :phrase_id
+    attr_accessible :phrase_id, :text, :phrase
     
     scope :containing_text, lambda {|query| where("tolk_translations.text LIKE ?", "%#{query}%") }
 
