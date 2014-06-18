@@ -15,6 +15,9 @@ module Tolk
 
     belongs_to :phrase, :class_name => 'Tolk::Phrase'
     belongs_to :locale, :class_name => 'Tolk::Locale'
+
+    accepts_nested_attributes_for :locale
+    attr_accessible :locale 
     validates_presence_of :locale_id
 
     before_save :set_primary_updated
