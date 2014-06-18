@@ -8,8 +8,6 @@ module Tolk
     cattr_accessor :per_page
     self.per_page = 30
     
-    accepts_nested_attributes_for :translations
-
     has_many :translations, :class_name => 'Tolk::Translation', :dependent => :destroy do
       def primary
         to_a.detect {|t| t.locale_id == Tolk::Locale.primary_locale.id}
@@ -19,6 +17,8 @@ module Tolk
         to_a.detect {|t| t.locale_id == locale.id}
       end
     end
+
+    accepts_nested_attributes_for :translations
 
     attr_accessor :translation
 
