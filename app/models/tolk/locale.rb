@@ -138,7 +138,7 @@ module Tolk
     end
 
     def to_hash
-      data = translations.includes(:phrase).references(:phrases).order(phrases.arel_table[:key]).
+      data = translations.includes(:phrase).order(phrases.arel_table[:key]).
         each_with_object({}) do |translation, locale|
           if translation.phrase.key.include?(".")
             locale.deep_merge!(unsquish(translation.phrase.key, translation.value))
