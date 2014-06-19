@@ -80,7 +80,9 @@ module Tolk
     # translation permitted params: :phrase_id, :locale_id, :text, :primary_updated, :previous_text, :locale, :phrase
     # test params: "translations"=>[{"id"=>"", "phrase_id"=>"8", "locale_id"=>"5", "text"=>"Dead men don't bite"}, {"id"=>"", "phrase_id"=>"7", "locale_id"=>"5", "text"=>""}]
     def translation_params
-      params[:translations]
+      params[:translations].map do | t |
+        t.slice :phrase_id, :text
+      end
     end
 
   end
