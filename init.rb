@@ -1,5 +1,7 @@
 Mime::Type.register_alias "text/yaml", :yml
 
+require 'zipruby'
+
 $KCODE = 'UTF8'
 begin
   require 'ya2yaml'

@@ -1,9 +1,8 @@
 source "http://rubygems.org"
 
-gem "rails", "3.2.14"
+gemspec 
 
-gem 'will_paginate'
-gem 'safe_yaml', '>= 0.8.6'
+gem "rails", "3.2.14"
 
 group 'test' do
   gem 'capybara'

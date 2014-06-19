@@ -15,6 +15,8 @@ Gem::Specification.new do |s|
   s.platform = Gem::Platform::RUBY
   s.add_dependency('will_paginate')
   s.add_dependency('safe_yaml', ">= 0.8")
+  s.add_dependency('zipruby')
+
   if File.exists?('UPGRADING')
     s.post_install_message = File.read("UPGRADING")
   end

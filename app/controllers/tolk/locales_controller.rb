@@ -1,3 +1,4 @@
+require 'zipruby'
 module Tolk
   class LocalesController < Tolk::ApplicationController
     before_filter :find_locale, :only => [:show, :all, :update, :updated]
@@ -47,6 +48,11 @@ module Tolk
       Tolk::Locale.dump_all
       I18n.reload!
       redirect_to request.referrer
+    end
+
+    def dump_zip
+      archive = Tolk::Locale.dump_zip
+      send_data archive, type: 'application/zip', disposition: 'attachment', filename: 'locales.zip'
     end
 
     def stats

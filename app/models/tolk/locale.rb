@@ -54,6 +54,18 @@ module Tolk
         secondary_locales.each { |locale| locale.dump(*args) }
       end
 
+      def dump_zip(*args)
+        buffer = ''
+
+        Zip::Archive.open_buffer( buffer, Zip::CREATE) do |archive|
+          secondary_locales.each do |locale| 
+            archive.add_buffer( "#{locale.name}.yml", locale.to_yaml ) 
+          end 
+        end
+
+        buffer
+      end
+
       def dump_yaml(name, *args)
           find_by_name(name).dump(*args)
       end
@@ -147,6 +159,10 @@ module Tolk
           end
         end
       { name => data }
+    end
+
+    def to_yaml
+      to_hash.to_yaml
     end
 
     def to_param

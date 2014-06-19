@@ -70,6 +70,23 @@ class LocaleTest < ActiveSupport::TestCase
     assert_equal 5, tolk_locales(:se).count_phrases_without_translation
   end
 
+  test "dumping all locales as a zip" do
+    Tolk::Locale.primary_locale_name = 'en'
+    Tolk::Locale.primary_locale(true)
+    
+    buffer = Tolk::Locale.dump_zip
+
+    Zip::Archive.open_buffer(buffer) do |archive|
+      expected_files = %w( da se ).map { |l| "#{l}.yml"}
+    
+      assert_equal archive.num_files, expected_files.length
+
+      archive.each do | file | 
+        assert expected_files.include? file.name
+      end
+    end
+  end
+
   test "dumping all locales to yml" do
     Tolk::Locale.primary_locale_name = 'en'
     Tolk::Locale.primary_locale(true)
