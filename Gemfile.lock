@@ -134,3 +134,4 @@ DEPENDENCIES
   selenium-webdriver
   sqlite3
   tolk!
+  zipruby

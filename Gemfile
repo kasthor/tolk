@@ -1,8 +1,10 @@
 source "http://rubygems.org"
 
-gemspec 
 
 gem "rails", "3.2.14"
+gem "zipruby", require: 'zipruby'
+
+gemspec 
 
 group 'test' do
   gem 'capybara'

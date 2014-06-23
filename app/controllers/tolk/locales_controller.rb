@@ -1,4 +1,3 @@
-require 'zipruby'
 module Tolk
   class LocalesController < Tolk::ApplicationController
     before_filter :find_locale, :only => [:show, :all, :update, :updated]
