@@ -1,4 +1,5 @@
 require 'tolk/config'
+require 'archiver/archiver'
 
 module Tolk
   class Locale < ActiveRecord::Base
@@ -55,15 +56,7 @@ module Tolk
       end
 
       def dump_zip(*args)
-        buffer = ''
-
-        Zip::Archive.open_buffer( buffer, Zip::CREATE) do |archive|
-          secondary_locales.each do |locale| 
-            archive.add_buffer( "#{locale.name}.yml", locale.to_yaml ) 
-          end 
-        end
-
-        buffer
+        Archiver::Archiver.create_archive_from_locales secondary_locales
       end
 
       def dump_yaml(name, *args)
