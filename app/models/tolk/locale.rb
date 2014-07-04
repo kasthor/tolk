@@ -55,7 +55,7 @@ module Tolk
         secondary_locales.each { |locale| locale.dump(*args) }
       end
 
-      def dump_zip(*args)
+      def dump_archive(*args)
         Archiver::Archiver.create_archive_from_locales secondary_locales
       end
 

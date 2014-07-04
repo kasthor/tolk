@@ -49,9 +49,9 @@ module Tolk
       redirect_to request.referrer
     end
 
-    def dump_zip
-      archive = Tolk::Locale.dump_zip
-      send_data archive, type: 'application/zip', disposition: 'attachment', filename: 'locales.zip'
+    def dump_archive
+      archive = Tolk::Locale.dump_archive
+      send_data archive, type: 'application/x-tar', disposition: 'attachment', filename: 'locales.tar'
     end
 
     def stats

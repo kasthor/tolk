@@ -18,7 +18,7 @@
         <% if @locale.present? %>
           <span class="locale"><%= link_to @locale.language_name, locale_path(@locale) %></span>
         <% end %>
-        <span class="locale"><%= button_to "Download Changes", dump_zip_locales_path, method: :get, class: :apply %></span>
+        <span class="locale"><%= button_to "Download Changes", dump_archive_locales_path, method: :get, class: :apply %></span>
         <span class="locale"><%= button_to "Apply Changes", dump_all_locales_path, :method => :post, :class => "apply" %></span></h1>
     </div>
     <%= yield %>

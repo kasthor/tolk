@@ -12,6 +12,7 @@ group 'test' do
   gem "mocha"
   gem 'launchy'
   gem 'selenium-webdriver'
+  gem 'archive-tar-minitar'
 end
 
 group 'development' do
